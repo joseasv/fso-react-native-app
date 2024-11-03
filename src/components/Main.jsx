@@ -1,11 +1,11 @@
-import Constants from 'expo-constants';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View } from "react-native";
+import theme from "../theme";
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: Constants.statusBarHeight,
-    flexGrow: 1,
-    flexShrink: 1,
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: theme.colors.backgroundSecondary,
   },
 });
 
