@@ -1,4 +1,4 @@
-import { Text as NativeText, StyleSheet } from "react-native";
+import { Text as NativeText, StyleSheet, Platform } from "react-native";
 
 import theme from "../theme";
 
@@ -24,9 +24,16 @@ const styles = StyleSheet.create({
   fontWeightBold: {
     fontWeight: theme.fontWeights.bold,
   },
+  fontFamily: {
+    fontFamily: Platform.select({
+      android: theme.fonts.android,
+      ios: theme.fonts.ios,
+      default: theme.fonts.main,
+    }),
+  },
 });
 
-const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
+const Text = ({ color, fontSize, fontWeight, style, fontFamily, ...props }) => {
   const textStyle = [
     styles.text,
     color === "textSecondary" && styles.colorTextSecondary,
@@ -34,8 +41,12 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
     color === "error" && styles.errorColor,
     fontSize === "subheading" && styles.fontSizeSubheading,
     fontWeight === "bold" && styles.fontWeightBold,
+    styles.fontFamily,
     style,
   ];
+
+  console.log(style);
+  console.log(styles.fontFamily);
 
   return <NativeText style={textStyle} {...props} />;
 };
