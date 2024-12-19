@@ -45,9 +45,6 @@ const Text = ({ color, fontSize, fontWeight, style, fontFamily, ...props }) => {
     style,
   ];
 
-  console.log(style);
-  console.log(styles.fontFamily);
-
   return <NativeText style={textStyle} {...props} />;
 };
 
