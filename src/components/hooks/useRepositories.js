@@ -11,7 +11,7 @@ const useRepositories = () => {
   let repositories = undefined;
 
   if (data) {
-    console.log("data", data);
+    //console.log("data", data);
     repositories = data.repositories;
   }
 

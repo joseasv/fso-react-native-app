@@ -17,7 +17,7 @@ const RepositoryList = () => {
     ? repositories.edges.map((edge) => edge.node)
     : [];
 
-  console.log("repository nodes ", repositoryNodes);
+  //console.log("repository nodes ", repositoryNodes);
 
   const ItemSeparator = () => <View style={styles.separator} />;
 
