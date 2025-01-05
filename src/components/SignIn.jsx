@@ -5,7 +5,8 @@ import { useFormik } from "formik";
 import { StyleSheet } from "react-native";
 import theme from "../theme";
 import useSignIn from "./hooks/useSignIn";
-import AuthStorage from "../utils/authStorage";
+import { useNavigate } from "react-router-native";
+//import useAuthStorage from "./hooks/useAuthStorage";
 
 const styles = StyleSheet.create({
   container: {
@@ -51,17 +52,15 @@ const initialValues = {
 
 const SignIn = () => {
   const [signIn] = useSignIn();
-  const authStorage = new AuthStorage("repositories-app");
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     const { username, password } = values;
     console.log(values);
 
     try {
-      const { data } = await signIn({ username, password });
-      //console.log(data.authenticate.accessToken);
-      await authStorage.setAccessToken(data.authenticate.accessToken);
-      console.log("Signin accesstoken ", await authStorage.getAccessToken());
+      await signIn({ username, password });
+      navigate("/");
     } catch (e) {
       console.log(e);
     }
