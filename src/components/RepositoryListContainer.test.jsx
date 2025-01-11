@@ -1,11 +1,4 @@
-import { useState } from "react";
-import { Text, TextInput, Pressable, View } from "react-native";
-import {
-  render,
-  fireEvent,
-  screen,
-  within,
-} from "@testing-library/react-native";
+import { render, screen, within } from "@testing-library/react-native";
 import { RepositoryListContainer } from "./RepositoryList";
 
 describe("RepositoryList", () => {
@@ -58,7 +51,7 @@ describe("RepositoryList", () => {
       const repositoryItems = screen.getAllByTestId("repositoryItem");
       const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
 
-      screen.debug();
+      //screen.debug();
 
       const shownShortNumber = (number) => {
         return number > 1000
