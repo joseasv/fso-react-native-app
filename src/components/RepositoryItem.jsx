@@ -28,7 +28,7 @@ const RepositoryItem = ({ repositoryData }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View testID="repositoryItem" style={styles.container}>
       <RepositoryItemTop repoDataTop={repoDataTop} />
       <RepositoryItemBottom repoDataBottom={repoDataBottom} />
     </View>

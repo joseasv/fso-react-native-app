@@ -43,15 +43,15 @@ const RepositoryItemBottom = ({ repoDataBottom }) => {
         <Text>Stars</Text>
       </View>
       <View style={styles.flexItem}>
-        <Text fontWeight="bold">{shownForks} </Text>
+        <Text fontWeight="bold">{shownForks}</Text>
         <Text>Forks</Text>
       </View>
       <View style={styles.flexItem}>
-        <Text fontWeight="bold">{shownReviews} </Text>
+        <Text fontWeight="bold">{shownReviews}</Text>
         <Text>Reviews</Text>
       </View>
       <View style={styles.flexItem}>
-        <Text fontWeight="bold">{repoDataBottom.rating} </Text>
+        <Text fontWeight="bold">{repoDataBottom.rating}</Text>
         <Text>Rating</Text>
       </View>
     </View>
