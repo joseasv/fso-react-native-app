@@ -1,6 +1,7 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import RepositoryItemTop from "./RepositoryItemTop";
 import RepositoryItemBottom from "./RepositoryItemBottom";
+import { useNavigate } from "react-router-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -12,6 +13,7 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({ repositoryData }) => {
   //console.log(repositoryData);
+  const navigate = useNavigate();
 
   const repoDataTop = {
     fullName: repositoryData.fullName,
@@ -29,8 +31,15 @@ const RepositoryItem = ({ repositoryData }) => {
 
   return (
     <View testID="repositoryItem" style={styles.container}>
-      <RepositoryItemTop repoDataTop={repoDataTop} />
-      <RepositoryItemBottom repoDataBottom={repoDataBottom} />
+      <Pressable
+        onPress={() => {
+          console.log("pressing on ", repositoryData.fullName);
+          navigate(`/${repositoryData.id}`);
+        }}
+      >
+        <RepositoryItemTop repoDataTop={repoDataTop} />
+        <RepositoryItemBottom repoDataBottom={repoDataBottom} />
+      </Pressable>
     </View>
   );
 };

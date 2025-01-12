@@ -6,7 +6,7 @@ const useRepositories = () => {
     fetchPolicy: "cache-and-network",
   });
 
-  console.log(loading);
+  console.log("useRepositories loading ", loading);
 
   let repositories = undefined;
 
