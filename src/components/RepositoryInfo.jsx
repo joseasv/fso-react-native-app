@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Repository = () => {
+const RepositoryInfo = () => {
   const { id } = useParams();
   console.log("repository view with id ", id);
   const { repository, loading } = useRepository(id);
@@ -68,4 +68,4 @@ const Repository = () => {
   }
 };
 
-export default Repository;
+export default RepositoryInfo;

@@ -39,20 +39,28 @@ const RepositoryItemBottom = ({ repoDataBottom }) => {
   return (
     <View style={styles.container}>
       <View style={styles.flexItem}>
-        <Text fontWeight="bold">{shownStars}</Text>
-        <Text>Stars</Text>
+        <Text fontWeight="bold" fontSize="subheading">
+          {shownStars}
+        </Text>
+        <Text fontSize="subheading">Stars</Text>
       </View>
       <View style={styles.flexItem}>
-        <Text fontWeight="bold">{shownForks}</Text>
-        <Text>Forks</Text>
+        <Text fontWeight="bold" fontSize="subheading">
+          {shownForks}
+        </Text>
+        <Text fontSize="subheading">Forks</Text>
       </View>
       <View style={styles.flexItem}>
-        <Text fontWeight="bold">{shownReviews}</Text>
-        <Text>Reviews</Text>
+        <Text fontWeight="bold" fontSize="subheading">
+          {shownReviews}
+        </Text>
+        <Text fontSize="subheading">Reviews</Text>
       </View>
       <View style={styles.flexItem}>
-        <Text fontWeight="bold">{repoDataBottom.rating}</Text>
-        <Text>Rating</Text>
+        <Text fontWeight="bold" fontSize="subheading">
+          {repoDataBottom.rating}
+        </Text>
+        <Text fontSize="subheading">Rating</Text>
       </View>
     </View>
   );

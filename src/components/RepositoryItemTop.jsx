@@ -52,13 +52,19 @@ const RepositoryItemTop = ({ repoDataTop }) => {
       <Image style={styles.image} source={{ uri: repoDataTop.imageUrl }} />
       <View style={styles.container}>
         <View style={styles.fullNameFlexItem}>
-          <Text fontWeight="bold">{repoDataTop.fullName}</Text>
+          <Text fontWeight="bold" fontSize="subheading">
+            {repoDataTop.fullName}
+          </Text>
         </View>
         <View style={styles.descriptionFlexItem}>
-          <Text color="secondaryColor">{repoDataTop.description} </Text>
+          <Text color="secondaryColor" fontSize="subheading">
+            {repoDataTop.description}{" "}
+          </Text>
         </View>
         <View style={styles.languageFlexItem}>
-          <Text color="textSecondary">{repoDataTop.language}</Text>
+          <Text color="textSecondary" fontSize="subheading">
+            {repoDataTop.language}
+          </Text>
         </View>
       </View>
     </View>
