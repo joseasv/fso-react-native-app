@@ -11,6 +11,8 @@ import Text from "./Text";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.backgroundPrimary,
+    display: "flex",
+    flexDirection: "row",
   },
   scrollViewStyle: {
     paddingTop: Constants.statusBarHeight,
@@ -39,13 +41,16 @@ const AppBar = () => {
       <ScrollView horizontal contentContainerStyle={styles.scrollViewStyle}>
         <AppBarTab name="Repositories" path="/" />
         {data.me !== null ? (
-          <AppBarTab
-            name="Sign out"
-            path="/signin"
-            func={() => {
-              dispatch({ type: "signOut" });
-            }}
-          />
+          <>
+            <AppBarTab name="Create review" path="/createreview" />
+            <AppBarTab
+              name="Sign out"
+              path="/signin"
+              func={() => {
+                dispatch({ type: "signOut" });
+              }}
+            />
+          </>
         ) : (
           <AppBarTab name="Sign in" path="/signin" />
         )}
