@@ -1,6 +1,8 @@
 import useRepositories from "./hooks/useRepositories";
 import { FlatList, View, StyleSheet } from "react-native";
 import RepositoryItem from "./RepositoryItem";
+import PrincipleSelector from "./PrincipleSelector";
+import { useState } from "react";
 
 const styles = StyleSheet.create({
   separator: {
@@ -9,7 +11,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const RepositoryListContainer = ({ repositories }) => {
+export const RepositoryListContainer = ({ repositories, updatePrinciples }) => {
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : [];
@@ -18,6 +20,7 @@ export const RepositoryListContainer = ({ repositories }) => {
 
   return (
     <FlatList
+      ListHeaderComponent={<PrincipleSelector updateList={updatePrinciples} />}
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => (
@@ -29,11 +32,18 @@ export const RepositoryListContainer = ({ repositories }) => {
 };
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
+  const [principleId, setPrincipleId] = useState(0);
+
+  const { repositories } = useRepositories(principleId);
   console.log("Repository list ", repositories);
   // Get the nodes from the edges array
 
-  return <RepositoryListContainer repositories={repositories} />;
+  return (
+    <RepositoryListContainer
+      repositories={repositories}
+      updatePrinciples={setPrincipleId}
+    />
+  );
 };
 
 export default RepositoryList;
