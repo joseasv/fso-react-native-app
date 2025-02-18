@@ -19,15 +19,16 @@ const allPrinciples = [
   },
 ];
 
-const useRepositories = (principleId) => {
+const useRepositories = ({ principleId, searchString }) => {
   const { data, error, loading } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: "cache-and-network",
-    variables: allPrinciples[principleId],
+    variables: { ...allPrinciples[principleId], searchKeyword: searchString },
   });
 
   console.log(
-    "querying allrepositories with principle ",
-    allPrinciples[principleId],
+    "querying allrepositories with principleId and searchString ",
+    principleId,
+    searchString,
   );
 
   console.log("useRepositories loading ", loading);

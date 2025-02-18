@@ -32,16 +32,19 @@ export const RepositoryListContainer = ({ repositories, updatePrinciples }) => {
 };
 
 const RepositoryList = () => {
-  const [principleId, setPrincipleId] = useState(0);
+  const [filterAndOrder, setFilterAndOrder] = useState({
+    principleId: 0,
+    searchString: "",
+  });
 
-  const { repositories } = useRepositories(principleId);
+  const { repositories } = useRepositories(filterAndOrder);
   console.log("Repository list ", repositories);
   // Get the nodes from the edges array
 
   return (
     <RepositoryListContainer
       repositories={repositories}
-      updatePrinciples={setPrincipleId}
+      updatePrinciples={setFilterAndOrder}
     />
   );
 };
