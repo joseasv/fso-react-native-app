@@ -1,7 +1,7 @@
 import useRepositories from "./hooks/useRepositories";
 import { FlatList, View, StyleSheet } from "react-native";
 import RepositoryItem from "./RepositoryItem";
-import PrincipleSelector from "./PrincipleSelector";
+import ListHeader from "./ListHeader";
 import { useState } from "react";
 
 const styles = StyleSheet.create({
@@ -20,7 +20,7 @@ export const RepositoryListContainer = ({ repositories, updatePrinciples }) => {
 
   return (
     <FlatList
-      ListHeaderComponent={<PrincipleSelector updateList={updatePrinciples} />}
+      ListHeaderComponent={<ListHeader updateList={updatePrinciples} />}
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={({ item }) => (
