@@ -7,6 +7,7 @@ import { ME } from "../graphql/queries";
 import { useAuthStorage } from "./hooks/useAuthStorage";
 
 import Text from "./Text";
+import UserReviews from "./UserReviews";
 
 const styles = StyleSheet.create({
   container: {
@@ -43,6 +44,7 @@ const AppBar = () => {
         {data.me !== null ? (
           <>
             <AppBarTab name="Create review" path="/createreview" />
+            <AppBarTab name="My reviews" path="/userreviews" />
             <AppBarTab
               name="Sign out"
               path="/signin"
