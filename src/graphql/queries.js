@@ -57,6 +57,7 @@ export const ME = gql`
             repository {
               fullName
               ratingAverage
+              id
             }
             repositoryId
             text

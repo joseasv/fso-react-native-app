@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 });
 
 const UserReviews = () => {
-  const { reviews } = useMeUserReviews();
+  const { reviews, refetch } = useMeUserReviews();
   console.log("UserReviews reviews ", reviews);
   const ItemSeparator = () => <View style={styles.separator} />;
 
@@ -20,7 +20,7 @@ const UserReviews = () => {
       data={reviews}
       keyExtractor={({ id }) => id}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item }) => <ReviewItem review={item} />}
+      renderItem={({ item }) => <ReviewItem review={item} refetch={refetch} />}
     />
   );
 };
