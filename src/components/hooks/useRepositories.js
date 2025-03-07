@@ -19,17 +19,40 @@ const allPrinciples = [
   },
 ];
 
-const useRepositories = ({ principleId, searchString }) => {
-  const { data, error, loading } = useQuery(GET_REPOSITORIES, {
-    fetchPolicy: "cache-and-network",
-    variables: { ...allPrinciples[principleId], searchKeyword: searchString },
-  });
+const useRepositories = ({ principleId, searchString, pagVariables }) => {
+  const { data, error, loading, fetchMore, ...result } = useQuery(
+    GET_REPOSITORIES,
+    {
+      fetchPolicy: "cache-and-network",
+      variables: {
+        ...allPrinciples[principleId],
+        searchKeyword: searchString,
+        ...pagVariables,
+      },
+    },
+  );
 
   console.log(
     "querying allrepositories with principleId and searchString ",
     principleId,
     searchString,
+    pagVariables,
   );
+
+  const handleFetchMore = () => {
+    const canFetchMore = !loading && data?.repositories.pageInfo.hasNextPage;
+
+    if (!canFetchMore) {
+      return;
+    }
+
+    fetchMore({
+      variables: {
+        after: data.repositories.pageInfo.endCursor,
+        ...pagVariables,
+      },
+    });
+  };
 
   console.log("useRepositories loading ", loading);
 
@@ -44,7 +67,12 @@ const useRepositories = ({ principleId, searchString }) => {
     console.log("error", error);
   }
 
-  return { repositories, loading };
+  return {
+    repositories: data?.repositories,
+    fetchMore: handleFetchMore,
+    loading,
+    ...result,
+  };
 };
 
 export default useRepositories;

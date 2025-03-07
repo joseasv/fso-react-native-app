@@ -11,7 +11,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export const RepositoryListContainer = ({ repositories, updatePrinciples }) => {
+export const RepositoryListContainer = ({
+  repositories,
+  updatePrinciples,
+  onEndReach,
+}) => {
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
     : [];
@@ -27,6 +31,8 @@ export const RepositoryListContainer = ({ repositories, updatePrinciples }) => {
         <RepositoryItem repositoryData={item} key={item.id} />
       )}
       keyExtractor={(repo) => repo.id}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   );
 };
@@ -35,16 +41,33 @@ const RepositoryList = () => {
   const [filterAndOrder, setFilterAndOrder] = useState({
     principleId: 0,
     searchString: "",
+    pagVariables: {
+      first: 8,
+    },
   });
 
-  const { repositories } = useRepositories(filterAndOrder);
-  console.log("Repository list ", repositories);
+  console.log("current filterAndOrder ", filterAndOrder);
+
+  const { repositories, fetchMore } = useRepositories(filterAndOrder);
+  //console.log("Repository list ", repositories);
   // Get the nodes from the edges array
+
+  if (repositories !== undefined) {
+    console.log("Fetching more ", repositories.edges.length);
+  }
+  const onEndReach = () => {
+    if (repositories !== undefined) {
+      console.log("Fetching more ", repositories.edges.length);
+    }
+
+    fetchMore();
+  };
 
   return (
     <RepositoryListContainer
       repositories={repositories}
       updatePrinciples={setFilterAndOrder}
+      onEndReach={onEndReach}
     />
   );
 };

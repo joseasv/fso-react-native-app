@@ -33,6 +33,9 @@ const ListHeader = ({ updateList }) => {
   const [filterAndOrder, setFilterAndOrder] = useState({
     principleId: 0,
     searchString: "",
+    pagVariables: {
+      first: 8,
+    },
   });
   const [debounceText] = useDebounce(filterAndOrder.searchString, 500);
 

@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 const RepositoryInfo = () => {
   const { id } = useParams();
   console.log("repository view with id ", id);
-  const { repository, loading } = useRepository(id);
+  const { repository, loading } = useRepository({ id, first: 8 });
   console.log("repository", repository);
 
   if (!loading) {
