@@ -52,6 +52,10 @@ const RepositoryList = () => {
   //console.log("Repository list ", repositories);
   // Get the nodes from the edges array
 
+  const updateList = (newVariables) => {
+    setFilterAndOrder({ ...filterAndOrder, ...newVariables });
+  };
+
   if (repositories !== undefined) {
     console.log("Fetching more ", repositories.edges.length);
   }
@@ -66,7 +70,7 @@ const RepositoryList = () => {
   return (
     <RepositoryListContainer
       repositories={repositories}
-      updatePrinciples={setFilterAndOrder}
+      updatePrinciples={updateList}
       onEndReach={onEndReach}
     />
   );
